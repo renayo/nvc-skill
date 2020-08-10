@@ -15,7 +15,6 @@ class Nvc(MycroftSkill):
             self.register_intent_file('need.intent', self.handle_need)
             self.register_intent_file('request.intent', self.handle_request)
             self.register_intent_file('quote.intent', self.handle_quote)
-        
 
     def handle_start(self, message):
             self.speak_dialog('start')
@@ -36,7 +35,7 @@ class Nvc(MycroftSkill):
             self.speak_dialog('examplefeeling1')
             self.speak(" in stead of ")            
             self.speak_dialog('examplefeeling2')
-            self.speak(" To state your feelings about "+ message.data.get('observation') + ", say the wake word and then 'I feel ...'")
+            self.speak(" To state your feelings about '"+ message.data.get('observation') + "', say the wake word and then 'I feel ...'")
            
     def handle_feeling(self, message):
             self.feeling1 = message.data.get('feeling')
@@ -44,10 +43,11 @@ class Nvc(MycroftSkill):
             for judgment in judgments:
                 if judgment in self.feeling1:
                     self.speak("Your last response contains a hint of a judgment. It may be better to reformulate your statement about your feelings.")
-                    self.speak(" To restate your feelings about "+ self.observe1 + ", say the wake word and then 'I feel ...'")
-                    pass
-            self.speak("When you say '" + message.data.get('feeling') + "', what are needs, values, and desires within you that create these feelings? Some common needs include autonomy, integrity, interdependence, play, spiritual communion, and physical nurturance. Accordingly, what do you need, value, or desire that creates these feelings that you have described as '" + message.data.get('feeling') +"'?")
-            self.speak(" To state these deeper needs, say the wake word and then 'I need ....'")
+                    self.speak("To restate your feelings about '"+ self.observe1 + "', say the wake word and then 'I feel ...' or you can continue with needs as the next step.")
+                    break
+            self.speak("When you say '" + message.data.get('feeling') + "', what are needs, values, and desires within you that create these feelings? Some common needs include autonomy, integrity, interdependence, play, spiritual communion, and physical nurturance.")
+            self.speak_dialog('specificneeds')
+            self.speak("Accordingly, what do you need, value, or desire that creates these feelings that you have described as '" + message.data.get('feeling') +"'? To state these deeper needs, say the wake word and then 'I need ....'")
         
     def handle_need(self, message):
             self.need1 = message.data.get('need')
