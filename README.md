@@ -10,6 +10,7 @@ This skill is based on the work of Marshall Rosenberg, PhD; particularly his boo
 * "Compassionate communication"
 * "Nonviolent communication"
 * "nvc"
+* "communication quote"
 
 ## Credits
 renayo
