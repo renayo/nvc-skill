@@ -2,7 +2,7 @@
 Nce to structure thinking into effective communication
 
 ## About
-This skill is based on the work of marshall rosenberg, phd; particularly his book titled "nonviolent communication: a language of life" (third edition).
+This skill is based on the work of Marshall Rosenberg, PhD; particularly his book titled "Nonviolent Communication: a Language of Life" (third edition).
 
 ## Examples
 * "Lets communicate"
