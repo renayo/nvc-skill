@@ -31,6 +31,12 @@ class Nvc(MycroftSkill):
 
     def handle_observe(self, message):
             self.observe1 = message.data.get('observation')
+            evaluations=["always","often","usually","frequently"]
+            for evaluation in evaluations:
+                if evaluation in self.observe1:
+                    self.speak("Your last response contains a hint of evaluation. It may be better to reformulate your statement about your observation.")
+                    self.speak("To restate your observations about '"+ self.other1 + "', say the wake word and then 'I observe ...' or you can continue with feelings as the next step.")
+                    break
             self.speak_dialog('observe')
             self.speak_dialog('examplefeeling1')
             self.speak(" in stead of ")            
@@ -45,9 +51,9 @@ class Nvc(MycroftSkill):
                     self.speak("Your last response contains a hint of a judgment. It may be better to reformulate your statement about your feelings.")
                     self.speak("To restate your feelings about '"+ self.observe1 + "', say the wake word and then 'I feel ...' or you can continue with needs as the next step.")
                     break
-            self.speak("When you say '" + message.data.get('feeling') + "', what are needs, values, and desires within you that create these feelings? Some common needs include autonomy, integrity, interdependence, play, spiritual communion, and physical nurturance.")
+            self.speak("When you say '" + message.data.get('feeling') + "', what are deeper needs, values, and desires within you that create these feelings? Some common deeper needs include autonomy, integrity, celebration, interdependence, play, spiritual communion, and physical nurturance.")
             self.speak_dialog('specificneeds')
-            self.speak("Accordingly, what do you need, value, or desire that creates these feelings that you have described as '" + message.data.get('feeling') +"'? To state these deeper needs, say the wake word and then 'I need ....'")
+            self.speak("Accordingly, what do you more deeply need, value, or desire that creates these feelings that you have described as '" + message.data.get('feeling') +"'? To state these deeper needs, say the wake word and then 'I need ....'")
         
     def handle_need(self, message):
             self.need1 = message.data.get('need')
@@ -55,7 +61,7 @@ class Nvc(MycroftSkill):
             self.speak("Based on that, what do you wish to request from '" + self.other1 + "' that you are not presently receiving? You can say 'I request' ....")
         
     def handle_request(self, message):
-            self.speak("Good. Putting it all together, here is something you can say to '" + self.other1 + "'. "+ self.observe1 + ". I feel " + self.feeling1 + ". I need " + self.need1 + ". I request " + message.data.get('request') + ". Ask '" + self.other1 + "' to reflect this back.")        
+            self.speak("Good. Putting it all together, here is something you can say to '" + self.other1 + "'. "+ self.observe1 + ". I feel " + self.feeling1 + ". I need " + self.need1 + ". I request " + message.data.get('request') + ". Ask '" + self.other1 + "' to reflect this back in their own words.")        
                    
     def stop(self):
         pass
